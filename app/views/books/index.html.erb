@@ -1,0 +1,40 @@
+
+<p><%= link_to 'them category', new_category_path %></p>
+<p><%= link_to 'tao moi sach', new_book_path %></p>
+
+<table>
+	<tr>
+		<th>
+			Tên Sách
+		</th>
+		<th>
+			Tác Giả
+		</th>
+		<th>
+			Mô Tả
+		</th>
+		<th>
+			Category
+		</th>
+	</tr>
+	<tbody>
+		<% @books.each do |book| %>
+			<tr>
+				<td>
+					<%= book.name %>
+				</td>
+				<td>
+					<%= book.author %>
+				</td>
+				<td>
+					<%= book.des %>
+				</td>
+				<td>
+					<% book.categories.each do |category| %> 
+						<%= category.cate %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
