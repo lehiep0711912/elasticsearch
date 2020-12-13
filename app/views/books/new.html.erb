@@ -1,0 +1,22 @@
+<%= form_for @book do |f|%>
+	<p>
+		<%= f.label :name, "ten sach" %>
+		<%= f.text_field :name, class: "form-control" %>
+	</p>
+	<p>
+		<%= f.label :author, "tac gia" %>
+		<%= f.text_field :author, class: "form-control" %>
+	</p>
+	<p>	
+		<%= f.label :des, "mo ta" %>
+		<%= f.text_field :des, class: "form-control" %>
+	</p>
+	<p>	
+		<%= f.label :category_ids, 'category'  %>
+		<%= collection_check_boxes(:book, :category_ids, Category.all, :id, :cate) do |b| %>
+	   		<%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
+		<% end %>
+	</p>
+	<%= f.submit 'create' %>
+
+<% end %>
