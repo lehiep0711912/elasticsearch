@@ -1,4 +1,8 @@
+<center><h1>Tao Moi mot cuon sach</h1></center>
+
+
 <%= form_for @book do |f|%>
+	<%= render 'shared/error_messages', object: f.object %>
 	<p>
 		<%= f.label :name, "ten sach" %>
 		<%= f.text_field :name, class: "form-control" %>
@@ -14,7 +18,7 @@
 	<p>	
 		<%= f.label :category_ids, 'category'  %>
 		<%= collection_check_boxes(:book, :category_ids, Category.all, :id, :cate) do |b| %>
-	   		<%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
+	   		<%= b.label(:"data-value" => b.value) { b.check_box + b.text.capitalize } %>
 		<% end %>
 	</p>
 	<%= f.submit 'create' %>

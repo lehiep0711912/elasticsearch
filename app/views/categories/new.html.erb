@@ -1,5 +1,6 @@
-Create category
+<center><h1>Them category</h1></center>
 <%= form_for @category do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
 	<%= f.text_field :cate, class: "form-control" %>
-	<%= f.submit 'Create' %>
+	<%= f.submit 'Create', class: 'btn btn-success' %>
 <% end %>
