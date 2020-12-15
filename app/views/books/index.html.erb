@@ -1,40 +1,59 @@
 
-<%= link_to 'them category', new_category_path, class: 'btn btn-primary ' %>
-<%= link_to 'tao moi sach', new_book_path, class: 'btn btn-primary ' %>
-
-<table id = "customers">
-	<tr>
-		<th>
-			Tên Sách
-		</th>
-		<th>
-			Tác Giả
-		</th>
-		<th>
-			Mô Tả
-		</th>
-		<th>
-			Category
-		</th>
-	</tr>
-	<tbody>
-		<% @books.each do |book| %>
-			<tr>
-				<td>
-					<%= link_to book.name, book_path(book) %>
-				</td>
-				<td>
-					<%= book.author %>
-				</td>
-				<td>
-					<%= book.des %>
-				</td>
-				<td>
-					<% book.categories.each do |category| %> 
-						<%= category.cate %>
-					<% end %>
-				</td>
-			</tr>
+<div class = "row" >
+	<div class = "col-sm-3">
+		<% Category.pluck(:cate).each do |cate| %>
+			<p><%= link_to cate , books_path(:cate => cate), class: "btn btn-primary btn-block"  %></p>
 		<% end %>
-	</tbody>
-</table>
+		<%= link_to 'all book', books_path, class: "btn btn-primary btn-block" %>
+	</div>
+	<div class = "col-sm-9">
+		
+		<table id = "customers">
+			<tr>
+				<th>
+					Stt
+				</th>
+				<th>
+					Tên Sách
+				</th>
+				<th>
+					Tác Giả
+				</th>
+				<th>
+					Mô Tả
+				</th>
+				<th>
+					Category
+				</th>
+			</tr>
+			<tbody>
+				<% @books.each_with_index do |book, index| %>
+					<tr>
+						<td>
+							<%= index %>
+						</td>
+						<td>
+							<%= link_to book.name, book_path(book) %>
+						</td>
+						<td>
+							<%= book.author %>
+						</td>
+						<td>
+							<%= book.des %>
+						</td>
+						<td>
+							<% book.categories.each do |category| %> 
+								<%= category.cate %>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<%= link_to 'them category', new_category_path, class: 'btn btn-primary ' %>
+		<%= link_to 'tao moi sach', new_book_path, class: 'btn btn-primary ' %>
+
+	</div>
+	
+</div>

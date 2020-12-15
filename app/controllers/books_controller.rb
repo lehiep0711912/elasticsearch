@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
   def index
-  	@books = Book.all
+    if params['cate'] == nil
+  	  @books = Book.all
+    else 
+      @books = Book.joins(:categories).where("cate=?", params['cate'])
+    end  
   end
 
   def new
