@@ -8,6 +8,7 @@ class Book < ApplicationRecord
 	validates :category_ids, presence: true
 	 include Elasticsearch::Model
      include Elasticsearch::Model::Callbacks
+
 end
 Book.__elasticsearch__.create_index!
 Book.import

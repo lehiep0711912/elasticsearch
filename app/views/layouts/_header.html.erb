@@ -1,0 +1,14 @@
+<div class="topnav">
+  <a class="active" href="/home">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <% if user_signed_in? %>
+    <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'login', new_user_session_path %>
+  <% end %>
+  <div class="search-container">
+      <!--  -->
+  </div>
+</div>
+

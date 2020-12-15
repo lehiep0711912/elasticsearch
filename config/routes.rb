@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get '/home', to: "books#index"
   root 'books#index'
-  get '/search', to: 'search#search'
+  # get 'search', to: 'application#search'
+   get '/search', to: 'search#search'
   resources :books
   resources :categories
 
